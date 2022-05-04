@@ -1,0 +1,51 @@
+{
+  "name": "@baselinecode/baseline",
+  "version": "1.0.3",
+  "description": "A utility project for standardising NodeJS projects",
+  "homepage": "https://github.com/Xmaxer/Baseline",
+  "repository": "https://github.com/Xmaxer/Baseline",
+  "license": "MIT",
+  "author": "Kevin Jakubauskas",
+  "exports": [
+    "./src/index.js",
+    "./tsconfig.js"
+  ],
+  "main": "./src/index.js",
+  "bin": {
+    "baseline": "src/main.js"
+  },
+  "scripts": {
+    "build": "ts-node scripts/build.ts",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0 --fix && prettier --write . && tsc --noEmit true && git add .",
+    "lint:ci": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0 && prettier --check . && tsc --noEmit true",
+    "publish": "cd ./dist/baseline && npm publish && cd ../baseline-eslint && npm publish"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "dependencies": {
+    "@trivago/prettier-plugin-sort-imports": "3.2.0",
+    "@typescript-eslint/eslint-plugin": "5.21.0",
+    "@typescript-eslint/parser": "5.21.0",
+    "commander": "9.2.0",
+    "eslint": "8.14.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "pre-commit": "1.2.2",
+    "prettier": "2.6.2",
+    "prettier-plugin-packagejson": "2.2.17",
+    "simple-git": "3.7.1",
+    "tsconfig-paths": "3.14.1",
+    "tscpaths": "0.0.9",
+    "typescript": "4.6.4"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.30",
+    "copyfiles": "2.4.1",
+    "rimraf": "3.0.2",
+    "ts-node": "10.7.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
